@@ -52,7 +52,7 @@ public class WelcomePage {
 	 */
 	public void createContents(Shell shell) {
 
-        shell.setSize(300, 200);
+        shell.setSize(420, 420);
         shell.setText("Welcome");
 
         Composite composite = new Composite(shell, SWT.NONE);
@@ -63,7 +63,7 @@ public class WelcomePage {
         label.setBounds(85, 50, 150, 25);
 
         Button button = new Button(composite, SWT.NONE);
-        button.setBounds(100, 100, 100, 25);
+        button.setBounds(100, 100, 102, 25);
         button.setText("Logout");
         button.addListener(SWT.Selection, event -> {
         	LoginScreen loginScreen = new LoginScreen();

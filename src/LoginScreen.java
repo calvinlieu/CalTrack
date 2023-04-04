@@ -16,7 +16,7 @@ public class LoginScreen{
 	HashMap<String, String> loginInfo = new HashMap<String, String>();
 	
 	
-	private static Text userNameField;
+	static Text userNameField;
 	private static Text passWordField;
 	private static Button loginButton;
 	private static Button resetButton;
@@ -27,6 +27,9 @@ public class LoginScreen{
 	
 
 	protected Shell shell;
+
+
+	public Object userPasswordField;
 
 	/**
 	 * Launch the application.
@@ -56,7 +59,7 @@ public class LoginScreen{
 		}
 	}
 	
-	private boolean login(String username, String password) {
+	boolean login(String username, String password) {
 	    // Check if the entered username and password are valid
 	    if (username.equals("Demo") && password.equals("password")) {
 	        return true;
