@@ -55,6 +55,17 @@ public class LoginScreen{
 			}
 		}
 	}
+	
+	private boolean login(String username, String password) {
+	    // Check if the entered username and password are valid
+	    if (username.equals("Demo") && password.equals("password")) {
+	        return true;
+	    } else if (username.equals("Calvin") && password.equals("password1")) {
+	        return true;
+	    } else {
+	    	return false;
+	    }
+	}
 
 	/**
 	 * Create contents of the window.
@@ -69,7 +80,7 @@ public class LoginScreen{
 		userNameLabel.setText("Username: ");
 		
 		passWordLabel = new Label(shell, SWT.NONE);
-		passWordLabel.setBounds(50, 150, 72, 25);
+		passWordLabel.setBounds(50, 150, 75, 25);
 		passWordLabel.setText("Password: ");
 		
 		messageLabel = new Label(shell, SWT.NONE);
@@ -78,15 +89,35 @@ public class LoginScreen{
 		userNameField = new Text(shell, SWT.BORDER);
 		userNameField.setBounds(125,  100, 200, 25);
 		
-		passWordField = new Text(shell, SWT.BORDER);
+		passWordField = new Text(shell, SWT.BORDER | SWT.PASSWORD);
 		passWordField.setBounds(125, 150, 200, 25);
 		
 		loginButton = new Button(shell, SWT.NONE);
 		loginButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-			}
+                String userId = userNameField.getText();
+                String password = passWordField.getText();
+
+                boolean loginSuccessful = login(userId, password);
+
+                if (loginSuccessful) {
+                	messageLabel.setText("Login successful");
+                    shell.dispose();
+
+                    Display display = Display.getDefault();
+                    WelcomePage welcomePage = new WelcomePage();
+                    Shell welcomeShell = new Shell(display);
+                    welcomePage.createContents(welcomeShell);
+                    welcomeShell.pack();
+                    welcomeShell.open();
+         
+                } else {
+                    messageLabel.setText("Login failed");
+                }
+            }
 		});
+		
         loginButton.setBounds(100, 200, 100, 25);
         loginButton.setText("Log In");
 		
@@ -96,34 +127,6 @@ public class LoginScreen{
 
 	}
 
-	public void widgetSelected(SelectionEvent e) {
-	    if (e.getSource() == resetButton) {
-	        userNameField.setText("");
-	        passWordField.setText("");
-	    }
-
-	    if (e.getSource() == loginButton) {
-	        String userName = userNameField.getText();
-	        String passWord = passWordField.getText();
-
-	        if (loginInfo.containsKey(userName)) {
-	            if (loginInfo.get(userName).equals(passWord)) {
-	                messageLabel.setForeground(new Color(255, 255, 255));
-	                messageLabel.setText("Login Successful");
-	                shell.dispose();
-	                // WelcomePage welcomePage = new WelcomePage(userName);
-	            } else {
-	                messageLabel.setBackground(new Color(255, 0, 0));
-	                messageLabel.setText("Wrong Password");
-	            }
-	        } else {
-	            messageLabel.setForeground(new Color(255, 0, 0));
-	            messageLabel.setText("User not found");
-	        }
-	    }
-	}
-
 	
-
 
 }

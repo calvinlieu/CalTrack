@@ -15,8 +15,8 @@ public class Main {
 		shell.setText("CalTrack");
 		
 		LoginScreen loginScreen = new LoginScreen();
+		loginScreen.open();
 
-		shell.open();
 		shell.layout();
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
