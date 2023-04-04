@@ -11,7 +11,7 @@ import org.eclipse.swt.widgets.MenuItem;
 public class WelcomePage {
 	
 //	private static Label welcomeLabel;
-	private Shell shell;
+	Shell shell;
 	
 	public WelcomePage() {
         // create the shell object
