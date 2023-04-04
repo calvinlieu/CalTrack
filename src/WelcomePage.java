@@ -5,6 +5,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 
 public class WelcomePage {
 	
@@ -51,9 +53,11 @@ public class WelcomePage {
 	 * @param welcomeShell 
 	 */
 	public void createContents(Shell shell) {
-
+		
+		Menu menuBar = new Menu(shell, SWT.BAR);
+		
         shell.setSize(420, 420);
-        shell.setText("Welcome");
+        shell.setText("CalTrack");
 
         Composite composite = new Composite(shell, SWT.NONE);
         composite.setBounds(0, 0, 300, 200);
@@ -62,15 +66,30 @@ public class WelcomePage {
         label.setText("Welcome to CalTrack");
         label.setBounds(85, 50, 150, 25);
 
-        Button button = new Button(composite, SWT.NONE);
-        button.setBounds(100, 100, 102, 25);
-        button.setText("Logout");
-        button.addListener(SWT.Selection, event -> {
+//        Button button = new Button(composite, SWT.NONE);
+//        button.setBounds(100, 100, 102, 25);
+//        button.setText("Logout");
+//        button.addListener(SWT.Selection, event -> {
+//        	LoginScreen loginScreen = new LoginScreen();
+//            shell.dispose();
+//            loginScreen.open();
+//        });
+        
+        shell.setMenuBar(menuBar);
+
+        MenuItem fileMenuHeader = new MenuItem(menuBar, SWT.CASCADE);
+        fileMenuHeader.setText("&File");
+
+        Menu fileMenu = new Menu(shell, SWT.DROP_DOWN);
+        fileMenuHeader.setMenu(fileMenu);
+
+        MenuItem exitMenuItem = new MenuItem(fileMenu, SWT.PUSH);
+        exitMenuItem.setText("&Logout");
+
+        exitMenuItem.addListener(SWT.Selection, event -> {
         	LoginScreen loginScreen = new LoginScreen();
             shell.dispose();
             loginScreen.open();
         });
-
     }
-
 }
