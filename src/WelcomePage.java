@@ -7,8 +7,10 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -50,9 +52,7 @@ public class WelcomePage {
         shlTest.layout();
         Display display = Display.getDefault();
         
-                
-                
-             
+        
         while (!shlTest.isDisposed()) {
             if (!display.readAndDispatch()) {
                 display.sleep();
@@ -77,12 +77,19 @@ public class WelcomePage {
 	     lblWelcomeToCaltrack.setFont(SWTResourceManager.getFont("MV Boli", 20, SWT.NORMAL));
 	     lblWelcomeToCaltrack.setText("Welcome to CalTrack!");
 	     
-	     Button btnNewButton = new Button(composite, SWT.NONE);
+	     Button btnNewButton = new Button(composite, SWT.PUSH);
 	     btnNewButton.addSelectionListener(new SelectionAdapter() {
 	     	@Override
 	     	public void widgetSelected(SelectionEvent e) {
-	     	
-	     	}
+	            Display display = Display.getDefault();
+	            Shell bmiShell = new Shell(display);
+	            bmiShell.setText("BMI Calculator");
+	            bmiShell.setSize(420, 420);
+	            BMICalc bmiCalc = new BMICalc(display);
+	            bmiCalc.createContents(bmiShell);
+	            bmiShell.open();
+	            
+	        }
 	     });
 	     btnNewButton.setBounds(56, 184, 170, 88);
 	     btnNewButton.setText("BMI Calculator");
@@ -108,6 +115,12 @@ public class WelcomePage {
             shell.dispose();
             loginScreen.open();
         });
+        
+        Monitor primaryMonitor = shell.getDisplay().getPrimaryMonitor();
+        Rectangle bounds = primaryMonitor.getBounds();
+        int x = bounds.x + (bounds.width - shell.getSize().x) / 2;
+        int y = bounds.y + (bounds.height - shell.getSize().y) / 2;
+        shell.setLocation(x, y);
         
         
     }

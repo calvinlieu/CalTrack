@@ -7,7 +7,9 @@ import java.util.HashMap;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.events.SelectionAdapter;
 
@@ -52,6 +54,14 @@ public class LoginScreen{
 		createContents();
 		shell.open();
 		shell.layout();
+		
+		Monitor primaryMonitor = shell.getDisplay().getPrimaryMonitor();
+	    Rectangle bounds = primaryMonitor.getBounds();
+	    int x = bounds.x + (bounds.width - shell.getSize().x) / 2;
+	    int y = bounds.y + (bounds.height - shell.getSize().y) / 2;
+	    shell.setLocation(x, y);
+		
+		
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
@@ -112,6 +122,7 @@ public class LoginScreen{
                     WelcomePage welcomePage = new WelcomePage();
                     Shell welcomeShell = new Shell(display);
                     welcomePage.createContents(welcomeShell);
+                    
                     welcomeShell.pack();
                     welcomeShell.open();
          
