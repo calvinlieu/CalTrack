@@ -127,6 +127,15 @@ public class LoginScreen{
         resetButton = new Button(shell, SWT.NONE);
         resetButton.setBounds(225, 200, 100, 25);
         resetButton.setText("Reset");
+        resetButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+                userNameField.setText("");
+                passWordField.setText("");
+               
+            }
+		});
+        
 
 	}
 
