@@ -23,9 +23,9 @@ public class WelcomePage {
         // create the shell object
         Display display = Display.getDefault();
         shlTest = new Shell(display);
-        shlTest.setMinimumSize(new Point(500, 500));
-        shlTest.setMaximumSize(new Point(500, 500));
-        shlTest.setModified(true);
+        shlTest.setMinimumSize(new Point(200, 200));
+        shlTest.setMaximumSize(new Point(500, 300));
+        shlTest.setModified(false);
     }
 	
 
@@ -47,7 +47,6 @@ public class WelcomePage {
 	 */
 	public void open() {
         createContents(shlTest);
-        shlTest.setSize(500,500);
         shlTest.open();
         shlTest.layout();
         Display display = Display.getDefault();
@@ -70,10 +69,10 @@ public class WelcomePage {
 		shell.setText("CalTrack");
 		
 		 Composite composite = new Composite(shell, SWT.NONE);
-	     composite.setBounds(0, 0, 482, 433);
+	     composite.setBounds(0, 0, 484, 200);
 	     
 	     Label lblWelcomeToCaltrack = new Label(composite, SWT.NONE);
-	     lblWelcomeToCaltrack.setBounds(99, 42, 283, 38);
+	     lblWelcomeToCaltrack.setBounds(105, 30, 283, 38);
 	     lblWelcomeToCaltrack.setFont(SWTResourceManager.getFont("MV Boli", 20, SWT.NORMAL));
 	     lblWelcomeToCaltrack.setText("Welcome to CalTrack!");
 	     
@@ -91,7 +90,7 @@ public class WelcomePage {
 	            
 	        }
 	     });
-	     btnNewButton.setBounds(56, 184, 170, 88);
+	     btnNewButton.setBounds(10, 102, 243, 88);
 	     btnNewButton.setText("BMI Calculator");
 		
 		
@@ -122,6 +121,9 @@ public class WelcomePage {
         int y = bounds.y + (bounds.height - shell.getSize().y) / 2;
         shell.setLocation(x, y);
         
+        
+        shell.pack();
+        shell.open();
         
     }
 }
