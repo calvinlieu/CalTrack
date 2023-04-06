@@ -6,12 +6,13 @@ import java.util.HashMap;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Point;
 
 public class LoginScreen{
 	
@@ -52,6 +53,16 @@ public class LoginScreen{
 	public void open() {
 		Display display = Display.getDefault();
 		createContents();
+		
+		Image image = new Image(display, "src/image.png");
+		Label label = new Label(shell, SWT.NONE);
+		label.setImage(image);
+		label.setBounds(0, 0, 415,275);
+		
+        shell.setMinimumSize(new Point(420, 450));
+        shell.setMaximumSize(new Point(420, 450));
+		shell.setModified(false);
+		shell.pack();
 		shell.open();
 		shell.layout();
 		
@@ -85,25 +96,25 @@ public class LoginScreen{
 	 */
 	protected void createContents() {
 		shell = new Shell();
-		shell.setSize(420, 420);
+		shell.setSize(500, 500);
 		shell.setText("CalTrack");
 		
 		userNameLabel = new Label(shell, SWT.NONE);
-		userNameLabel.setBounds(50, 100, 75, 25);
+		userNameLabel.setBounds(50, 292, 75, 25);
 		userNameLabel.setText("Username: ");
 		
 		passWordLabel = new Label(shell, SWT.NONE);
-		passWordLabel.setBounds(50, 150, 75, 25);
+		passWordLabel.setBounds(50, 323, 75, 25);
 		passWordLabel.setText("Password: ");
 		
 		messageLabel = new Label(shell, SWT.NONE);
-		messageLabel.setBounds(125, 250, 250, 36);
+		messageLabel.setBounds(90, 385, 134, 36);
 		
 		userNameField = new Text(shell, SWT.BORDER);
-		userNameField.setBounds(125,  100, 200, 25);
+		userNameField.setBounds(125,  289, 200, 25);
 		
 		passWordField = new Text(shell, SWT.BORDER | SWT.PASSWORD);
-		passWordField.setBounds(125, 150, 200, 25);
+		passWordField.setBounds(125, 323, 200, 25);
 		
 		loginButton = new Button(shell, SWT.NONE);
 		loginButton.addSelectionListener(new SelectionAdapter() {
@@ -132,11 +143,11 @@ public class LoginScreen{
             }
 		});
 		
-        loginButton.setBounds(100, 200, 100, 25);
+        loginButton.setBounds(90, 354, 100, 25);
         loginButton.setText("Log In");
 		
         resetButton = new Button(shell, SWT.NONE);
-        resetButton.setBounds(225, 200, 100, 25);
+        resetButton.setBounds(225, 354, 100, 25);
         resetButton.setText("Reset");
         resetButton.addSelectionListener(new SelectionAdapter() {
 			@Override
