@@ -1,14 +1,63 @@
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.widgets.*;
 
-public class CalorieTracker {
-    public static void main(String[] args) {
-        Display display = new Display();
-        Shell shell = new Shell(display);
-        shell.setText("Calorie Tracker");
-        shell.setSize(500, 400);
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Text;
+
+public class CalorieTrack {
+	
+	public Display display;
+	Shell shell;
+	
+	public CalorieTrack(Display display) {
+		shell = new Shell(display);
+		shell.setSize(500, 400);
+		shell.setModified(true);
+	}
+
+	/**
+	 * Launch the application.
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Display display = new Display();
+		try {
+			CalorieTrack window = new CalorieTrack(display);
+			window.open();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Open the window.
+	 */
+	public void open() {
+		Display display = Display.getDefault();
+		createContents();
+		shell.open();
+		shell.layout();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+	}
+
+	/**
+	 * Create contents of the window.
+	 */
+	protected void createContents() {
+		shell.setText("Calorie Tracker");
         shell.setLayout(new GridLayout(2, false));
 
        
@@ -57,7 +106,8 @@ public class CalorieTracker {
             try {
                 calories = Integer.parseInt(calorieText.getText());
             } catch (NumberFormatException e) {
-                MessageBox messageBox = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+            	Shell shell1 = new Shell();
+                MessageBox messageBox = new MessageBox(shell1, SWT.ICON_ERROR | SWT.OK);
                 messageBox.setMessage("Invalid input for calories. It must be a number!");
                 messageBox.open();
                 return;
@@ -88,14 +138,8 @@ public class CalorieTracker {
             int currentTotalCalories = Integer.parseInt(totalValue.getText());
             totalValue.setText(String.valueOf(currentTotalCalories - removedCalories));
         });
-        
-        
+       
         shell.open();
-        while (!shell.isDisposed()) {
-            if (!display.readAndDispatch()) {
-                display.sleep();
-            }
-        }
-        display.dispose();
-    }
+	}
+
 }

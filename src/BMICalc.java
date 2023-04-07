@@ -23,7 +23,7 @@ public class BMICalc {
     public BMICalc(Display display) {
         shell = new Shell(display);
         shell.setSize(400, 400);
-        shell.setModified(true);
+        shell.setModified(false);
     }
 
     public static void main(String[] args) {

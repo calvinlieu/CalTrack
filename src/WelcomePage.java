@@ -1,3 +1,6 @@
+import java.io.IOException;
+
+
 import org.eclipse.swt.SWT;
 
 import org.eclipse.swt.widgets.Display;
@@ -11,6 +14,7 @@ import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -24,7 +28,7 @@ public class WelcomePage {
         // create the shell object
         Display display = Display.getDefault();
         shlTest = new Shell(display);
-        shlTest.setMinimumSize(new Point(200, 200));
+        shlTest.setMinimumSize(new Point(500, 300));
         shlTest.setMaximumSize(new Point(500, 300));
         shlTest.setModified(false);
     }
@@ -70,7 +74,7 @@ public class WelcomePage {
 		shell.setText("CalTrack");
 		
 		 Composite composite = new Composite(shell, SWT.NONE);
-	     composite.setBounds(0, 0, 484, 200);
+	     composite.setBounds(0, 0, 484, 241);
 	     
 	     Label lblWelcomeToCaltrack = new Label(composite, SWT.NONE);
 	     lblWelcomeToCaltrack.setBounds(105, 30, 283, 38);
@@ -87,12 +91,26 @@ public class WelcomePage {
 	            bmiShell.setSize(420, 420);
 	            BMICalc bmiCalc = new BMICalc(display);
 	            bmiCalc.createContents(bmiShell);
-	            bmiShell.open();
+	           
 	            
 	        }
 	     });
-	     btnNewButton.setBounds(10, 102, 243, 88);
+	     btnNewButton.setBounds(10, 141, 220, 88);
 	     btnNewButton.setText("BMI Calculator");
+	     
+	     Button openTrackerButton = new Button(composite, SWT.PUSH);
+	     openTrackerButton.setBounds(254, 141, 220, 88);
+	     openTrackerButton.setText("Calorie Tracker");
+	     openTrackerButton.addSelectionListener(new SelectionAdapter() {
+	         @Override
+	         public void widgetSelected(SelectionEvent event) {
+	        	 Display display = Display.getDefault();
+		            Shell calorieShell = new Shell(display);
+		            calorieShell.setText("Calorie Tracker");
+		            CalorieTrack calorieTrack = new CalorieTrack(display);
+		            calorieTrack.createContents();
+	         }
+	     });
 		
 		
         
