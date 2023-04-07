@@ -4,10 +4,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.*;
 
 public class CalorieTracker {
-	
-	static Label totalValue;
-	
-	
     public static void main(String[] args) {
         Display display = new Display();
         Shell shell = new Shell(display);
@@ -28,12 +24,12 @@ public class CalorieTracker {
 
         Button addButton = new Button(shell, SWT.PUSH);
         addButton.setText("Add");
-        addButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
+        addButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1));
 
         Table table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
         table.setHeaderVisible(true);
         table.setLinesVisible(true);
-        table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
+        table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 2, 1));
 
         TableColumn foodColumn = new TableColumn(table, SWT.LEFT);
         foodColumn.setText("Food");
@@ -44,25 +40,34 @@ public class CalorieTracker {
 
         Button removeButton = new Button(shell, SWT.PUSH);
         removeButton.setText("Remove");
-        removeButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
+        removeButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1));
 
         Label totalLabel = new Label(shell, SWT.NONE);
         totalLabel.setText("Total Calories:");
-       
+        totalLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+        Label totalValue = new Label(shell, SWT.NONE);
+        totalValue.setText("0");
+        totalValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+        
         
         addButton.addListener(SWT.Selection, event -> {
             String food = foodText.getText();
-            int calories = Integer.parseInt(calorieText.getText().trim());
+            int calories = 0;
+            
+            try {
+                calories = Integer.parseInt(calorieText.getText());
+            } catch (NumberFormatException e) {
+                MessageBox messageBox = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+                messageBox.setMessage("Invalid input for calories. It must be a number!");
+                messageBox.open();
+                return;
+            }
 
             TableItem item = new TableItem(table, SWT.NONE);
             item.setText(new String[] {food, String.valueOf(calories)});
-            
-            Label totalValue = new Label(shell, SWT.NONE);
-            totalValue.setText("0".trim());
 
             int currentTotalCalories = Integer.parseInt(totalValue.getText());
             totalValue.setText(String.valueOf(currentTotalCalories + calories));
-            System.out.println(totalValue.getText());
 
             foodText.setText("");
             calorieText.setText("");
@@ -73,9 +78,9 @@ public class CalorieTracker {
             int[] selectedIndices = table.getSelectionIndices();
             int removedCalories = 0;
 
-            for (int i = 0; i < selectedIndices.length; i++) {
+            for (int i : selectedIndices) {
                 TableItem item = table.getItem(i);
-                removedCalories += Integer.parseInt(item.getText(1).trim());
+                removedCalories += Integer.parseInt(item.getText(1));
             }
 
             table.remove(selectedIndices);
@@ -83,7 +88,8 @@ public class CalorieTracker {
             int currentTotalCalories = Integer.parseInt(totalValue.getText());
             totalValue.setText(String.valueOf(currentTotalCalories - removedCalories));
         });
-
+        
+        
         shell.open();
         while (!shell.isDisposed()) {
             if (!display.readAndDispatch()) {
