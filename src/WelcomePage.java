@@ -18,6 +18,7 @@ public class WelcomePage {
 	
 //	private static Label welcomeLabel;
 	Shell shlTest;
+	public Shell shell;
 	
 	public WelcomePage() {
         // create the shell object
