@@ -1,13 +1,11 @@
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
-
-import java.util.HashMap;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -16,19 +14,12 @@ import org.eclipse.swt.graphics.Point;
 
 public class LoginScreen{
 	
-	HashMap<String, String> loginInfo = new HashMap<String, String>();
-	
-	
 	static Text userNameField;
-	private static Text passWordField;
-	private static Button loginButton;
-	private static Button resetButton;
-	private static Label userNameLabel;
-	private static Label passWordLabel;
-	private static Label messageLabel;
-	
-	
-
+	static Text passWordField;
+	static Button loginButton;
+	static Button resetButton;
+	static Label userNameLabel;
+	static Label passWordLabel;
 	protected Shell shell;
 
 
@@ -98,6 +89,7 @@ public class LoginScreen{
 		shell = new Shell();
 		shell.setSize(500, 500);
 		shell.setText("CalTrack");
+		shell.setModified(false);
 		
 		userNameLabel = new Label(shell, SWT.NONE);
 		userNameLabel.setBounds(50, 292, 75, 25);
@@ -106,10 +98,7 @@ public class LoginScreen{
 		passWordLabel = new Label(shell, SWT.NONE);
 		passWordLabel.setBounds(50, 323, 75, 25);
 		passWordLabel.setText("Password: ");
-		
-		messageLabel = new Label(shell, SWT.NONE);
-		messageLabel.setBounds(90, 385, 134, 36);
-		
+			
 		userNameField = new Text(shell, SWT.BORDER);
 		userNameField.setBounds(125,  289, 200, 25);
 		
@@ -126,19 +115,23 @@ public class LoginScreen{
                 boolean loginSuccessful = login(userId, password);
 
                 if (loginSuccessful) {
-                	messageLabel.setText("Login successful");
                     shell.dispose();
 
                     Display display = Display.getDefault();
                     WelcomePage welcomePage = new WelcomePage();
                     Shell welcomeShell = new Shell(display);
                     welcomePage.createContents(welcomeShell);
-                    
+               
+                 
                     welcomeShell.pack();
                     welcomeShell.open();
          
                 } else {
-                    messageLabel.setText("Login failed");
+                	Shell shell1 = new Shell();
+                    MessageBox messageBox = new MessageBox(shell1, SWT.ICON_ERROR | SWT.OK);
+                    messageBox.setMessage("Error logging in.");
+                    messageBox.open();
+                    return;
                 }
             }
 		});

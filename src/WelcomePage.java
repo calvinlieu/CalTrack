@@ -1,8 +1,4 @@
-import java.io.IOException;
-
-
 import org.eclipse.swt.SWT;
-
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
@@ -12,9 +8,9 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -28,8 +24,9 @@ public class WelcomePage {
         // create the shell object
         Display display = Display.getDefault();
         shlTest = new Shell(display);
-        shlTest.setMinimumSize(new Point(500, 300));
-        shlTest.setMaximumSize(new Point(500, 300));
+        shlTest.setSize(500, 428);
+        shlTest.setMinimumSize(new Point(550, 300));
+        shlTest.setMaximumSize(new Point(550, 300));
         shlTest.setModified(false);
     }
 	
@@ -56,6 +53,7 @@ public class WelcomePage {
         shlTest.layout();
         Display display = Display.getDefault();
         
+       
         
         while (!shlTest.isDisposed()) {
             if (!display.readAndDispatch()) {
@@ -69,19 +67,23 @@ public class WelcomePage {
 	 * @param welcomeShell 
 	 */
 	public void createContents(Shell shell) {
-		
-		shell.setSize(500, 500);
+		Display display = Display.getDefault();
+        shell.setMinimumSize(new Point(500, 500));
+        shell.setMaximumSize(new Point(500, 500));
 		shell.setText("CalTrack");
-		
-		 Composite composite = new Composite(shell, SWT.NONE);
-	     composite.setBounds(0, 0, 484, 241);
+		shell.setModified(false);
 	     
-	     Label lblWelcomeToCaltrack = new Label(composite, SWT.NONE);
-	     lblWelcomeToCaltrack.setBounds(105, 30, 283, 38);
+	     Label lblWelcomeToCaltrack = new Label(shell, SWT.NONE);
+	     lblWelcomeToCaltrack.setBounds(105, 54, 283, 38);
 	     lblWelcomeToCaltrack.setFont(SWTResourceManager.getFont("MV Boli", 20, SWT.NORMAL));
 	     lblWelcomeToCaltrack.setText("Welcome to CalTrack!");
 	     
-	     Button btnNewButton = new Button(composite, SWT.PUSH);
+	     Image image = new Image(display, "src/fitness.png");
+			Label imageLabel = new Label(shell, SWT.NONE);
+			imageLabel.setImage(image);
+			imageLabel.setBounds(10, 98, 464,234);
+	     
+	     Button btnNewButton = new Button(shell, SWT.PUSH);
 	     btnNewButton.addSelectionListener(new SelectionAdapter() {
 	     	@Override
 	     	public void widgetSelected(SelectionEvent e) {
@@ -91,16 +93,23 @@ public class WelcomePage {
 	            bmiShell.setSize(420, 420);
 	            BMICalc bmiCalc = new BMICalc(display);
 	            bmiCalc.createContents(bmiShell);
-	           
-	            
 	        }
 	     });
-	     btnNewButton.setBounds(10, 141, 220, 88);
+	     btnNewButton.setBounds(10, 348, 220, 88);
 	     btnNewButton.setText("BMI Calculator");
 	     
-	     Button openTrackerButton = new Button(composite, SWT.PUSH);
-	     openTrackerButton.setBounds(254, 141, 220, 88);
+	     Button openTrackerButton = new Button(shell, SWT.PUSH);
+	     openTrackerButton.setBounds(254, 348, 220, 88);
 	     openTrackerButton.setText("Calorie Tracker");
+	     
+	     Label lblVersion = new Label(shell, SWT.NONE);
+	     lblVersion.setBounds(404, 10, 70, 15);
+	     lblVersion.setText("Version 1.0.0");
+	     
+	     Label lblHelloDemo = new Label(shell, SWT.NONE);
+	     lblHelloDemo.setFont(SWTResourceManager.getFont("MV Boli", 20, SWT.NORMAL));
+	     lblHelloDemo.setBounds(10, 10, 203, 38);
+	     lblHelloDemo.setText("Hello Demo,");
 	     openTrackerButton.addSelectionListener(new SelectionAdapter() {
 	         @Override
 	         public void widgetSelected(SelectionEvent event) {

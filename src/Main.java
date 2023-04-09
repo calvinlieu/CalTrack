@@ -9,13 +9,13 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		Display display = Display.getDefault();
-		Shell shell = new Shell();
+		Shell shell = new Shell(display);
 		shell.setSize(450, 300);
 		shell.setText("CalTrack");
 		
 		LoginScreen loginScreen = new LoginScreen();
 		loginScreen.open();
-
+		
 		shell.layout();
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
