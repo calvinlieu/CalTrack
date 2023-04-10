@@ -1,5 +1,6 @@
 
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
@@ -23,8 +24,6 @@ public class BMICalc {
 
     public BMICalc(Display display) {
         shell = new Shell(display);
-        shell.setSize(400, 400);
-        shell.setModified(false);
     }
 
     public static void main(String[] args) {
@@ -55,6 +54,7 @@ public class BMICalc {
         shell.setText("BMI Calculator");
         GridLayout layout = new GridLayout(2, false);
         shell.setLayout(layout);
+        
         
         bmiImage = new Image(display, "src/bmi-chart.jpg");
         int newWidth = 800;

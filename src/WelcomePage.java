@@ -90,7 +90,6 @@ public class WelcomePage {
 	            Display display = Display.getDefault();
 	            Shell bmiShell = new Shell(display);
 	            bmiShell.setText("BMI Calculator");
-	            bmiShell.setSize(420, 420);
 	            BMICalc bmiCalc = new BMICalc(display);
 	            bmiCalc.createContents(bmiShell);
 	        }

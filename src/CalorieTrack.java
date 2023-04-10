@@ -17,6 +17,8 @@ public class CalorieTrack {
 	
 	public Display display;
 	Shell shell;
+	public Label totalValue;
+	
 	
 	public CalorieTrack(Display display) {
 		shell = new Shell(display);
@@ -94,9 +96,10 @@ public class CalorieTrack {
         Label totalLabel = new Label(shell, SWT.NONE);
         totalLabel.setText("Total Calories:");
         totalLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-        Label totalValue = new Label(shell, SWT.NONE);
+        totalValue = new Label(shell, SWT.NONE);
         totalValue.setText("0");
         totalValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+
         
         
         addButton.addListener(SWT.Selection, event -> {
