@@ -8,7 +8,7 @@ Table of Contents
 3. [Description](#description)
 4. [Manual and Automated Tests](#manual-and-automated-tests) 
 5. [Current Features and Work in Progress](#current-features-and-work-in-progress)
-6. [Status Report](#Status Report)
+6. [Status Report](#status-report)
 
 ## Product Requirements
  - User Authentication: The login screen must have a mechanism to authenticate users' identity to ensure only authorized users can access the application. After a successful login, a welcome screen will appear with additional content.
