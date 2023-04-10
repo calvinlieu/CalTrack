@@ -8,7 +8,7 @@ Table of Contents
 3. [Description](#description)
 4. [Manual and Automated Tests](#manual-and-automated-tests) 
 5. [Current Features and Work in Progress](#current-features-and-work-in-progress)
-6. [Technologies Used](#technologies-used)
+6. [Status Report](#Status Report)
 
 ## Product Requirements
  - User Authentication: The login screen must have a mechanism to authenticate users' identy to ensure only authorized users can access the application. After a successful login, a welcome screen will appear with additional content.
@@ -57,7 +57,25 @@ Table of Contents
   
   
   ## Manual and Automated Tests
-   
   
+CalTrack includes comprehensive error validations and unit tests written in JUnit. The tests cover a variety of scenarios and ensure the proper functioning of the code.
+
+The error validations include checks for invalid input values, such as non-numeric inputs, and ensure that appropriate error messages are displayed to the user. Additionally, the tests cover edge cases, such as when the input values are at the minimum or maximum allowed values.
+
+The unit tests cover all major functions of the code, including input validation, data processing, and output display. Each test is designed to test a specific feature or scenario, ensuring that the code functions correctly in all possible situations.
+
+To run the tests, simply navigate to the test directory and run any Test.java file. All tests should pass without error, indicating that the code is functioning correctly.
+
+Overall, these error validations and unit tests provide peace of mind that the code is functioning as intended and will help ensure that future updates or changes do not introduce unintended bugs or errors.
+   
+  ## Current Features and Work in Progress
+  
+Currently, CalTrack offers 2 features within the application. Later on, I plan to implement the ability to import and export local data files in order to save your data.
+
+  ## Status Report
+
+As of version 1.0.0, everything is currently fully functional and online. However, there is a major bug with running CalTrack as a runnable JAR file and is currently being looked into. So as of right now, I am asking users to run the application using the steps listed in the "How To Use Application" section.
+
+
   
 
