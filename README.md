@@ -5,8 +5,8 @@ Table of Contents
 
 1. [Product Requirements](#product-requirements)
 2. [How To Use Application](#how-to-use-application)
-3. [Manual and Automated Tests](#manual-and-automated-tests)
-4. [Description](#description)
+3. [Description](#description)
+4. [Manual and Automated Tests](#manual-and-automated-tests) 
 5. [Current Features and Work in Progress](#current-features-and-work-in-progress)
 6. [Technologies Used](#technologies-used)
 
@@ -25,4 +25,36 @@ Table of Contents
  - Calorie Tracker Add and Remove Functionality: The calorie tracker should provide an "Add" and "Remove" button that allows users to control their food and calorie information from the table. This functionality should also update the total calorie count displayed on the screen.
  - Calorie Tracker Error Handling: The calorie tracker should validate all user input and provide clear error messages if there are any issues with the input. For example, if the user inputs an invalid calorie count, the app should display an error message explaining the issue and prompt the user to correct it.
  - Logout Session Termination: The log out functionality should terminate the user's session. Upon a successful logout, users are taken back to the login screen where they are required to input their credentials.
+ 
+ 
+ ## How To Use Application
+  1. Clone the GitHub Repository. (https://github.com/calvinlieu/CalTrack.git).
+  2. If you do not have Eclipse IDE installed, you can download Eclipse from the official website at https://www.eclipse.org/downloads/.
+  3. Once Eclipse is installed, import the project via File > Import > General > Existing Projects into Workspace > Copy projects into workspace > Finish.
+  4. Check for missing dependencies by adding any required libraries to the project's classpath.
+  5. Run the application via Eclipse's Package Explorer view by selecting "Run As > Java Application > Main - (default package)". This will launch the application in a new window.
+  
+  ## Description 
+  - Once the application is open, users are greeted with a Login page. In order to login, users must enter a Username of "Demo" and a Password of "password".
+  
+    ![image](https://cdn.discordapp.com/attachments/967128927065735218/1094817404464402472/image.png)
+    
+  - Upon a successful login, a new window will open with a welcome page as well as the main features of the GUI. From here, users are given the option to either select on the BMI Calculator or the Calorie Tracker.
+  
+    ![image](https://cdn.discordapp.com/attachments/967128927065735218/1094818362464419941/image.png)
+    
+  - If the user selects on the BMI Calculator, a new window will open where they are greeted with a place where they can input their height and weight and in return, will calculate their BMI and post it in the results label. 
+  
+    ![image](https://cdn.discordapp.com/attachments/967128927065735218/1094819073738682529/image.png)
+    
+  - If the user selects on the Calorie Tracker, a new window will open where they are able to input the food that they have ate along with the amount of calories. From here, users are able to see the total amount of calories at the bottom of the application.
+  
+    ![image](https://cdn.discordapp.com/attachments/967128927065735218/1094819906127679609/image.png)
+    
+  - Once users are finished with the application, they are able to log out by navigating to the menu bar at the top > file > log out.
+  
+    ![image](https://cdn.discordapp.com/attachments/967128927065735218/1094820300169953422/image.png)
+  
+  
+  
 
