@@ -1,3 +1,4 @@
+package CalorieTrack;
 
 
 import org.eclipse.swt.SWT;
@@ -58,7 +59,7 @@ public class CalorieTrack {
 	/**
 	 * Create contents of the window.
 	 */
-	protected void createContents() {
+	public void createContents() {
 		shell.setText("Calorie Tracker");
         shell.setLayout(new GridLayout(2, false));
 

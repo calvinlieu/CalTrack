@@ -1,3 +1,4 @@
+package BMICalc;
 import static org.junit.Assert.*;
 
 import org.eclipse.swt.widgets.Display;

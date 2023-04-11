@@ -1,5 +1,5 @@
+package CalorieTrack;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Table;
@@ -71,7 +71,7 @@ public class CalorieTrackTest {
         table.select(0);
         int selectedIndices[] = table.getSelectionIndices();
         int removedCalories = 0;
-
+        
         for (int i = 0; i < selectedIndices.length; i++) {
             TableItem item = table.getItem(i);
             removedCalories += Integer.parseInt(item.getText(1));

@@ -1,3 +1,4 @@
+package BMICalc;
 
 import org.eclipse.swt.SWT;
 
@@ -50,7 +51,7 @@ public class BMICalc {
         }
     }
 
-    protected void createContents(Shell shell) {
+    public void createContents(Shell shell) {
         shell.setText("BMI Calculator");
         GridLayout layout = new GridLayout(2, false);
         shell.setLayout(layout);
